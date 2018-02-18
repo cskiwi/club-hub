@@ -68,4 +68,4 @@ import { NgModule } from '@angular/core';
     MatTooltipModule
   ]
 })
-export class MaterialModuleModule { }
+export class MaterialModule { }

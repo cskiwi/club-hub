@@ -1,15 +1,24 @@
 const mongoose = require('mongoose');
 const mongoosePaginate = require('mongoose-paginate');
 
-
-const UserSchema = new mongoose.Schema({
-    title: String,
-    description: String,
-    date: Date,
-    status: String
+const address = new mongoose.Schema({
+    street: String,
+    number: Number,
+    city: String,
+    state: String,
+    postalCode: Number,
+    active: Boolean
 });
 
-UserSchema.plugin(mongoosePaginate);
-const User = mongoose.model('User', UserSchema);
+
+const userSchema = new mongoose.Schema({
+    email: String,
+    firstName: String,
+    lastName: String,
+    address: [address]
+});
+
+userSchema.plugin(mongoosePaginate);
+const User = mongoose.model('User', userSchema);
 
 module.exports = User;

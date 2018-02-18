@@ -23,6 +23,18 @@ exports.getUsers = async function (query, page, limit) {
     }
 };
 
+
+exports.getUser = async function (id) {
+    // Try Catch the awaited promise to handle the error
+
+    try {
+        return await User.findOne({_id : id});
+    } catch (e) {
+        // return a Error message describing the reason
+        throw Error('Error while Paginating Users')
+    }
+};
+
 exports.createUser = async function (user) {
 
     // Creating a new Mongoose Object by using the new keyword

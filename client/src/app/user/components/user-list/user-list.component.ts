@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { UserService } from '../../services/user.service';
+import { MatTableDataSource } from '@angular/material';
+import User from '../../models/user.model';
 
 @Component({
   selector: 'app-user-list',
@@ -6,10 +9,22 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./user-list.component.scss']
 })
 export class UserListComponent implements OnInit {
-
-  constructor() { }
+  userList: MatTableDataSource<User>;
+  displayedColumns = ['id', 'name'];
+  constructor(public userService: UserService) { }
 
   ngOnInit() {
+    this.userList = new MatTableDataSource<User>();
+    this.userService.getUsers().map(r => this.userList.data = r);
+
+
+
+  }
+
+  applyFilter(filterValue: string) {
+    filterValue = filterValue.trim(); // Remove whitespace
+    filterValue = filterValue.toLowerCase(); // MatTableDataSource defaults to lowercase matches
+    this.userList.filter = filterValue;
   }
 
 }

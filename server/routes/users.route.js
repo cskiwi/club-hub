@@ -1,16 +1,18 @@
 var express = require('express');
-const ToDoController = require('../controllers/todos.controller');
+const UserController = require('../controllers/users.controller');
 
 const user = express.Router();
 
 /* GET users listing. */
-user.get('/', ToDoController.getTodos);
+user.get('/', UserController.getUsers);
 
-user.post('/', ToDoController.createTodo);
+user.get('/:id', UserController.getUser);
 
-user.put('/', ToDoController.updateTodo);
+user.post('/', UserController.createUser);
 
-user.delete('/:id',ToDoController.removeTodo);
+user.put('/', UserController.updateUser);
+
+user.delete('/:id',UserController.removeUser);
 
 
 module.exports.users = user;
