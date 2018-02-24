@@ -48,17 +48,10 @@ exports.getUser = async function (req, res, next) {
 exports.createUser = async function (req, res, next) {
 
     // Req.Body contains the form submit values.
-
-    const user = {
-        title: req.body.title,
-        description: req.body.description,
-        status: req.body.status
-    };
-
     try {
 
         // Calling the Service function with the new object from the Request Body
-        const createdUser = await UserService.createUser(user);
+        const createdUser = await UserService.createUser(req.body);
         return res.status(201).json({status: 201, data: createdUser, message: "Succesfully Created ToDo"})
     } catch (e) {
 

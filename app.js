@@ -1,21 +1,21 @@
-var express = require('express');
-var path = require('path');
-var favicon = require('serve-favicon');
-var logger = require('morgan');
-var bodyParser = require('body-parser');
+const cors = require('cors')
+const express = require('express');
+const path = require('path');
+const logger = require('morgan');
+const bodyParser = require('body-parser');
 
-var book = require('./routes/book');
-var app = express();
+const app = express();
+app.use(cors())
 
-var mongoose = require('mongoose');
+const mongoose = require('mongoose');
 mongoose.Promise = require('bluebird');
 
-var
+let
   mongoURL = process.env.OPENSHIFT_MONGODB_DB_URL || process.env.MONGO_URL,
   mongoURLLabel = "";
 
 if (mongoURL == null && process.env.DATABASE_SERVICE_NAME) {
-  var mongoServiceName = process.env.DATABASE_SERVICE_NAME.toUpperCase(),
+  const mongoServiceName = process.env.DATABASE_SERVICE_NAME.toUpperCase(),
     mongoHost = process.env[mongoServiceName + '_SERVICE_HOST'],
     mongoPort = process.env[mongoServiceName + '_SERVICE_PORT'],
     mongoDatabase = process.env[mongoServiceName + '_DATABASE'],
@@ -40,27 +40,19 @@ mongoose.connect(mongoURL, { useMongoClient: true, promiseLibrary: require('blue
 
 app.use(logger('dev'));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({'extended':'false'}));
+app.use(bodyParser.urlencoded({extended:true}));
+// resources
 app.use(express.static(path.join(__dirname, 'dist')));
-app.use('/books', express.static(path.join(__dirname, 'dist')));
-app.use('/book', book);
 
-// catch 404 and forward to error handler
-app.use(function(req, res, next) {
-  var err = new Error('Not Found');
-  err.status = 404;
-  next(err);
+// Api
+app.use('/api/users', require('./routes/users.route').users);
+app.use('/api/todos', require('./routes/todos.route').todos);
+
+// Client
+app.use(function(req, res) {
+  res.sendFile(path.join(__dirname, '/dist', 'index.html'));
 });
 
-// error handler
-app.use(function(err, req, res, next) {
-  // set locals, only providing error in development
-  res.locals.message = err.message;
-  res.locals.error = req.app.get('env') === 'development' ? err : {};
 
-  // render the error page
-  res.status(err.status || 500);
-  res.render('error');
-});
 
 module.exports = app;
