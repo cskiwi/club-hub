@@ -3,6 +3,9 @@
   "description": "A hub for all players / clubs",
   "version": "0.1.2",
   "license": "MIT",
+  "engines": {
+    "node": ">=7.6"
+  },
   "author": "Glenn Latomme<glenn.latomme@gmail.com>",
   "scripts": {
     "ng": "ng",
