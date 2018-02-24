@@ -1,6 +1,6 @@
 {
-  "name": "mean-angular5",
-  "version": "0.0.0",
+  "name": "Club hub",
+  "version": "0.1.0",
   "license": "MIT",
   "scripts": {
     "ng": "ng",
