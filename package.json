@@ -6,6 +6,7 @@
   "engines": {
     "node": ">=7.6"
   },
+  "main":"bin/www",
   "author": "Glenn Latomme<glenn.latomme@gmail.com>",
   "scripts": {
     "ng": "ng",
