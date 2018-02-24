@@ -15,10 +15,7 @@ export class UserListComponent implements OnInit {
 
   ngOnInit() {
     this.userList = new MatTableDataSource<User>();
-    this.userService.getUsers().map(r => this.userList.data = r);
-
-
-
+    this.userService.getUsers().subscribe(r => this.userList.data = r);
   }
 
   applyFilter(filterValue: string) {
