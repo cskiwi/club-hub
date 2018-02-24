@@ -1,7 +1,7 @@
 {
   "name": "club-hub",
   "description": "A hub for all players / clubs",
-  "version": "0.1.0",
+  "version": "0.1.2",
   "license": "MIT",
   "author": "Glenn Latomme<glenn.latomme@gmail.com>",
   "scripts": {
