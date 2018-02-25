@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 const mongoosePaginate = require('mongoose-paginate');
 
 const address = new mongoose.Schema({
+  description: String,
   street: String,
   number: Number,
   city: String,

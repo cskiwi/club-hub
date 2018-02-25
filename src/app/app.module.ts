@@ -1,19 +1,19 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import {BrowserModule} from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
+import {HttpClientModule} from '@angular/common/http';
 
-import { AppComponent } from './app.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { FormsModule } from '@angular/forms';
-import { MaterialModule } from './material-module/material-module.module';
-import { RouterModule, Routes } from '@angular/router';
-import { HomeComponent } from './home/home.component';
-import { UserModule } from './user/user.module';
+import {AppComponent} from './app.component';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {FormsModule} from '@angular/forms';
+import {MaterialModule} from './material-module/material-module.module';
+import {RouterModule, Routes} from '@angular/router';
+import {HomeComponent} from './home/home.component';
+import {UserModule} from './user/user.module';
 
 const routes: Routes = [
   {path: '', redirectTo: 'home', pathMatch: 'full'},
   {path: 'home', component: HomeComponent},
-  {path: '**', component: HomeComponent}
+  // {path: '**', component: HomeComponent}
 ];
 
 @NgModule({
@@ -28,8 +28,7 @@ const routes: Routes = [
     BrowserAnimationsModule,
     MaterialModule,
     RouterModule.forRoot(routes, {enableTracing: false}),
-    UserModule
-
+    UserModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
