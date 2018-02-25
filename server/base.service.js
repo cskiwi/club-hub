@@ -1,4 +1,5 @@
-function gen(model, type) {
+const ignoredValues = ['date_created', 'date_modified','_id'];
+function gen(model, updateFunc) {
   async function list(query, page, limit) {
 
     // Options setup for the mongoose paginate
@@ -46,32 +47,27 @@ function gen(model, type) {
   }
 
   async function update(user) {
-    const id = user.id;
-    let oldUser;
+    const id = user._id;
+    let oldModel;
 
     try {
       //Find the old User Object by the Id
-
-      oldUser = await model.findById(id);
+      oldModel = await model.findById(id);
     } catch (e) {
       throw Error("Error occured while Finding the User")
     }
 
     // If no old User Object exists return false
-    if (!oldUser) {
+    if (!oldModel) {
       return false;
     }
 
-    // TODO: make generic
-    //Edit the User Object
-    oldUser.title = user.title;
-    oldUser.description = user.description;
-    oldUser.status = user.status;
+    let newModel = updateFunc(oldModel, user);
 
-
+    newModel.date_modified = new Date();
 
     try {
-      return await oldUser.save();
+      return await newModel.save();
     } catch (e) {
       throw Error("And Error occured while updating the User");
     }
@@ -98,10 +94,10 @@ function gen(model, type) {
     read,
     update,
     del,
-    type
+    type : model.modelName
   };
 }
 
-module.exports = function (model, type) {
-  return gen(model, type)
+module.exports = function (schema) {
+  return gen(schema.schemaModel, schema.schemaUpdate)
 };

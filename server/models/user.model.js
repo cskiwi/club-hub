@@ -21,7 +21,18 @@ const userSchema = new mongoose.Schema({
   date_modified: Date
 });
 
-userSchema.plugin(mongoosePaginate);
-const User = mongoose.model('User', userSchema);
 
-module.exports = User;
+function updateUser(oldModel, newModel){
+  oldModel.email = newModel.email;
+  oldModel.firstName = newModel.firstName;
+  oldModel.lastName = newModel.lastName;
+  return oldModel;
+}
+
+userSchema.plugin(mongoosePaginate);
+
+module.exports = {
+  schemaModel: mongoose.model('User', userSchema),
+  schemaUpdate: updateUser
+};
+

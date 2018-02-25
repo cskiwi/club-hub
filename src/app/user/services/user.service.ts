@@ -31,7 +31,7 @@ export class UserService {
       .map(y => y.map(x => assign(new User, x)));
   }
 
-  // Update component, takes a User Object as parameter
+  // schemaUpdate component, takes a User Object as parameter
   editUser(user: User) {
     // returns the observable of http put request
     return this.http.put(`${this.userUrl}`, user);

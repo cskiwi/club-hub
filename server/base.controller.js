@@ -61,17 +61,8 @@ function gen(service) {
 
     const id = req.body._id;
 
-
-    // TODO: write update logic
-    const user = {
-      id,
-      title: req.body.title ? req.body.title : null,
-      description: req.body.description ? req.body.description : null,
-      status: req.body.status ? req.body.status : null
-    };
-
     try {
-      const updatedUser = await service.update(user);
+      const updatedUser = await service.update(req.body);
       return res.status(200).json({status: 200, data: updatedUser, message: `Succesfully Updated ${service.type}`})
     } catch (e) {
       return res.status(400).json({status: 400., message: e.message})
