@@ -5,7 +5,7 @@ import {UserListComponent} from './pages/user-list/user-list.component';
 import {UserDetailComponent} from './pages/user-detail/user-detail.component';
 import {UserCreateComponent} from './pages/user-create/user-create.component';
 import {UserService} from './services/user.service';
-import {MaterialModule} from '../material-module/material-module.module';
+import {MaterialModule} from '../material.module';
 import {FormsModule} from '@angular/forms';
 import {UserFormGeneralComponent} from './components/user-form-general/user-form-general.component';
 import {UserDetailSportInfoComponent} from './pages/user-detail/user-detail-sport-info/user-detail-sport-info.component';
