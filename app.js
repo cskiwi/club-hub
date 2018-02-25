@@ -1,11 +1,11 @@
-const cors = require('cors')
+const cors = require('cors');
 const express = require('express');
 const path = require('path');
 const logger = require('morgan');
 const bodyParser = require('body-parser');
 
 const app = express();
-app.use(cors())
+app.use(cors());
 
 const mongoose = require('mongoose');
 mongoose.Promise = require('bluebird');
@@ -45,8 +45,8 @@ app.use(bodyParser.urlencoded({extended:true}));
 app.use(express.static(path.join(__dirname, 'dist')));
 
 // Api
-app.use('/api/users', require('./routes/users.route').users);
-app.use('/api/todos', require('./routes/todos.route').todos);
+app.use('/api/v1/users', require('./server/routes/users.route').users);
+app.use('/api/v1/clubs', require('./server/routes/clubs.route').clubs);
 
 // Client
 app.use(function(req, res) {

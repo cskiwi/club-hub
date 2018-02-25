@@ -12,7 +12,7 @@ import {ListResponse} from '../../../models/mongo.list.response';
 export class UserService {
 
   api_url = 'http://localhost:3000';
-  userUrl = `${this.api_url}/api/users`;
+  userUrl = `${this.api_url}/api/v1/users`;
 
   constructor(private http: HttpClient) {
   }
