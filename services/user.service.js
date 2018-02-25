@@ -5,7 +5,7 @@ const User = require('../models/user.model');
 _this = this;
 
 // Async function to get the To do List
-exports.getUsers = async function (query, page, limit) {
+exports.list = async function (query, page, limit) {
 
   // Options setup for the mongoose paginate
   const options = {
@@ -24,7 +24,7 @@ exports.getUsers = async function (query, page, limit) {
 };
 
 
-exports.getUser = async function (id) {
+exports.read = async function (id) {
   // Try Catch the awaited promise to handle the error
 
   try {
@@ -35,7 +35,7 @@ exports.getUser = async function (id) {
   }
 };
 
-exports.createUser = async function (user) {
+exports.create = async function (user) {
 
   // Creating a new Mongoose Object by using the new keyword
   const newUser = new User(user);
@@ -52,7 +52,7 @@ exports.createUser = async function (user) {
   }
 };
 
-exports.updateUser = async function (user) {
+exports.update = async function (user) {
   const id = user.id;
   let oldUser;
 
@@ -86,7 +86,7 @@ exports.updateUser = async function (user) {
   }
 };
 
-exports.deleteUser = async function (id) {
+exports.delete = async function (id) {
 
   // Delete the User
   try {

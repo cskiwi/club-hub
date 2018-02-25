@@ -5,6 +5,8 @@ import {Injectable} from '@angular/core';
 
 import 'rxjs/add/operator/map';
 import {assign} from 'rxjs/util/assign';
+import {MongoResponse} from '../../../models/mongo.response';
+import {ListResponse} from '../../../models/mongo.list.response';
 
 @Injectable()
 export class UserService {
@@ -25,7 +27,8 @@ export class UserService {
   // Read component, takes no arguments
   getUsers(): Observable<User[]> {
     return this.http.get(this.userUrl)
-      .map((res) => res.data.docs);
+      .map((res: MongoResponse<ListResponse<User>>) => res.data.docs)
+      .map(y => y.map(x => assign(new User, x)));
   }
 
   // Update component, takes a User Object as parameter
@@ -38,7 +41,7 @@ export class UserService {
   getUser(id: string): Observable<User> {
     // returns the observable of http put request
     return this.http.get(`${this.userUrl}/${id}`)
-      .map(res => res.data)
+      .map((res: MongoResponse<User>) => res.data)
       .map(x => assign(new User, x));
   }
 

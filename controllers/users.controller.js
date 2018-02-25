@@ -17,7 +17,7 @@ exports.getUsers = async function (req, res, next) {
 
     try {
 
-        const users = await UserService.getUsers({}, page, limit);
+        const users = await UserService.list({}, page, limit);
 
         // Return the users list with the appropriate HTTP Status Code and Message.
 
@@ -37,7 +37,7 @@ exports.getUser = async function (req, res, next) {
     const id = req.params.id;
 
     try {
-        const user = await UserService.getUser(id);
+        const user = await UserService.read(id);
         return res.status(200).json({status: 200, data: user, message: "Succesfully User Recieved"})
     } catch (e) {
         return res.status(400).json({status: 400, message: e.message})
@@ -51,7 +51,7 @@ exports.createUser = async function (req, res, next) {
     try {
 
         // Calling the Service function with the new object from the Request Body
-        const createdUser = await UserService.createUser(req.body);
+        const createdUser = await UserService.create(req.body);
         return res.status(201).json({status: 201, data: createdUser, message: "Succesfully Created ToDo"})
     } catch (e) {
 
@@ -81,7 +81,7 @@ exports.updateUser = async function (req, res, next) {
     };
 
     try {
-        const updatedUser = await UserService.updateUser(user);
+        const updatedUser = await UserService.update(user);
         return res.status(200).json({status: 200, data: updatedUser, message: "Succesfully Updated Tod"})
     } catch (e) {
         return res.status(400).json({status: 400., message: e.message})
@@ -93,7 +93,7 @@ exports.removeUser = async function (req, res, next) {
     const id = req.params.id;
 
     try {
-        const deleted = await UserService.deleteUser(id);
+        const deleted = await UserService.delete(id);
         return res.status(204).json({status: 204, message: "Succesfully User Deleted"})
     } catch (e) {
         return res.status(400).json({status: 400, message: e.message})

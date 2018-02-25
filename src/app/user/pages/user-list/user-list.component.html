@@ -11,13 +11,13 @@
 
     <!-- Position Column -->
     <ng-container matColumnDef="id">
-      <mat-header-cell *matHeaderCellDef> Id.</mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element._id}}</mat-cell>
+      <mat-header-cell *matHeaderCellDef> Name</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.fullName}}</mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="name">
-      <mat-header-cell *matHeaderCellDef> Name</mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.name}}</mat-cell>
+      <mat-header-cell *matHeaderCellDef> # Sports</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.sports ? element.sports.length : 0}}</mat-cell>
     </ng-container>
 
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
