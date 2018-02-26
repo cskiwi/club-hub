@@ -1,7 +1,7 @@
 {
   "name": "club-hub",
   "description": "A hub for all players / clubs",
-  "version": "0.1.4",
+  "version": "0.1.4b",
   "license": "MIT",
   "engines": {
     "node": ">=7.6"
@@ -10,8 +10,9 @@
   "author": "Glenn Latomme<glenn.latomme@gmail.com>",
   "scripts": {
     "ng": "ng",
-    "start": "ng build && node server",
+    "start": "node server",
     "start:dev": "mongod --dbpath D:\\data\\db",
+    "postinstall" : "ng build",
     "build": "ng build",
     "dev": "ng serve",
     "test": "ng test",
