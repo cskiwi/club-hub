@@ -1,14 +1,13 @@
-class Address {
+export class Address {
   constructor(
+    public description?: string,
     public street?: string,
     public number?: number,
     public city?: string,
     public state?: string,
-    public postalcode?: number,
-    public active?:boolean
+    public postalCode?: number,
+    public active?: boolean
   ) {
+    this.description = description || 'Primary';
   }
 }
-
-
-export default Address;

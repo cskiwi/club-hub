@@ -1,0 +1,15 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Sport history</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <mat-list dense>
+      <mat-list-item *ngFor="let i of [1,2,3,4,5,6,7,8,9]; last as last">
+        <mat-icon matListIcon>event</mat-icon>
+        <h3 matLine>Event {{i}} </h3>
+        <p matLine>Description</p>
+        <mat-divider [inset]="true" *ngIf="!last"></mat-divider>
+      </mat-list-item>
+    </mat-list>
+  </mat-card-content>
+</mat-card>
