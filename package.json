@@ -1,7 +1,7 @@
 {
   "name": "club-hub",
   "description": "A hub for all players / clubs",
-  "version": "0.1.4c",
+  "version": "0.1.4d",
   "license": "MIT",
   "engines": {
     "node": ">=7.6"
@@ -12,7 +12,6 @@
     "ng": "ng",
     "start": "node server",
     "start:dev": "mongod --dbpath D:\\data\\db",
-    "postinstall" : "ng build",
     "build": "ng build",
     "heroku-prebuild": "ng build --env=prod",
     "dev": "ng serve",
