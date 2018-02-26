@@ -2,6 +2,7 @@ import {User} from '../models/user.model';
 import {Observable} from 'rxjs/Observable';
 import {HttpClient} from '@angular/common/http';
 import {Injectable} from '@angular/core';
+import { environment } from '../../../environments/environment';
 
 import 'rxjs/add/operator/map';
 import {assign} from 'rxjs/util/assign';
@@ -11,7 +12,7 @@ import {ListResponse} from '../../../models/mongo.list.response';
 @Injectable()
 export class UserService {
 
-  api_url = process.env.API_URL || 'http://localhost:3000';
+  api_url = environment.api_url;
   userUrl = `${this.api_url}/api/v1/users`;
 
   constructor(private http: HttpClient) {
