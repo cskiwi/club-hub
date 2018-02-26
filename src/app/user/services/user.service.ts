@@ -34,7 +34,7 @@ export class UserService {
   // schemaUpdate component, takes a User Object as parameter
   editUser(user: User) {
     // returns the observable of http put request
-    return this.http.put(`${this.userUrl}`, user);
+    return this.http.put(`${this.userUrl}`, user).map((x: any) => x.data._id);
   }
 
   // Gets component, takes a id string as parameter

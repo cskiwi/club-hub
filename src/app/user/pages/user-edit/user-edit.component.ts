@@ -30,7 +30,7 @@ export class UserEditComponent implements OnInit {
 
   onSubmit(user: User) {
     this.userService.editUser(user).subscribe(r => {
-      this.router.navigate([`/user/`, r.data._id]);
+      this.router.navigate([`/user/`, r]);
     });
   }
 
