@@ -1,7 +1,7 @@
 {
   "name": "club-hub",
   "description": "A hub for all players / clubs",
-  "version": "0.1.4b",
+  "version": "0.1.4c",
   "license": "MIT",
   "engines": {
     "node": ">=7.6"

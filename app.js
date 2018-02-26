@@ -10,7 +10,7 @@ app.use(cors());
 const mongoose = require('mongoose');
 mongoose.Promise = require('bluebird');
 
-let mongoURL = process.env.MONGODB_URI || process.env.MONGOLAB_URI || process.env.MONGO_URL;
+let mongoURL = process.env.MONGODB_URI || process.env.MONGO_URL;
 
 
 mongoose.connect(mongoURL, {useMongoClient: true, promiseLibrary: require('bluebird')})

@@ -11,7 +11,7 @@ import {ListResponse} from '../../../models/mongo.list.response';
 @Injectable()
 export class UserService {
 
-  api_url = 'http://localhost:3000';
+  api_url = process.env.API_URL || 'http://localhost:3000';
   userUrl = `${this.api_url}/api/v1/users`;
 
   constructor(private http: HttpClient) {
