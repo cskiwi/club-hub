@@ -23,13 +23,13 @@ export class UserEditComponent implements OnInit {
     this.user$ =
       this.route.paramMap.switchMap(
         (params: ParamMap) => {
-          return this.userService.getUser(params.get('id'));
+          return this.userService.read(params.get('id'));
         }
       );
   }
 
   onSubmit(user: User) {
-    this.userService.editUser(user).subscribe(r => {
+    this.userService.read(user._id).subscribe(r => {
       this.router.navigate([`/user/`, r]);
     });
   }

@@ -1,7 +1,8 @@
 import {Address} from './adress.model';
 import {Sport} from './sport.model';
+import {MongoBase} from '../../_common/models/mongo-base';
 
-export class User {
+export class User extends MongoBase {
   constructor(
     public _id?: string,
     public email?: string,
@@ -10,6 +11,7 @@ export class User {
     public addresses?: Address[],
     public sports?: Sport[]
   ) {
+    super(_id);
     this.addresses = addresses || [new Address()];
   }
 

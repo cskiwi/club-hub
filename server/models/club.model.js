@@ -5,6 +5,7 @@ const mongoosePaginate = require('mongoose-paginate');
 const clubSchema = new mongoose.Schema({
   name: String,
   description: String,
+  users: [ObjectId]
 });
 
 clubSchema.plugin(mongoosePaginate);

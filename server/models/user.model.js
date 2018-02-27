@@ -18,7 +18,8 @@ const userSchema = new mongoose.Schema({
   lastName: String,
   address: [address],
   date_created: Date,
-  date_modified: Date
+  date_modified: Date,
+  clubs: [ObjectId]
 });
 
 

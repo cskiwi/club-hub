@@ -11,10 +11,10 @@
   "scripts": {
     "ng": "ng",
     "start": "node server",
-    "start:dev": "mongod --dbpath D:\\data\\db",
+    "start:mongo": "mongod --dbpath D:\\data\\db",
+    "start:client": "ng serve",
     "build": "ng build",
     "heroku-prebuild": "ng build --env=prod",
-    "dev": "ng serve",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"

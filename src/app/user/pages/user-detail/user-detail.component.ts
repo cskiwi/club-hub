@@ -24,9 +24,8 @@ export class UserDetailComponent implements OnInit {
     this.user$ =
       this.route.paramMap.switchMap(
         (params: ParamMap) => {
-          return this.userService.getUser(params.get('id'));
+          return this.userService.read(params.get('id'));
         }
       );
-
   }
 }

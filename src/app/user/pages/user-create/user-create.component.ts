@@ -11,14 +11,16 @@ import {Router} from '@angular/router';
 export class UserCreateComponent implements OnInit {
   user: User = new User();
 
-  constructor(private userService: UserService, private router: Router) {
+  constructor(
+    private userService: UserService,
+    private router: Router) {
   }
 
   ngOnInit() {
   }
 
   onSubmit(user: User) {
-    this.userService.createUser(user).subscribe(r => {
+    this.userService.create(user).subscribe(r => {
       this.router.navigate([`/user/`, r.data._id]);
     });
   }

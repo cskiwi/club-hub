@@ -9,6 +9,7 @@ import {MaterialModule} from './material.module';
 import {RouterModule, Routes} from '@angular/router';
 import {HomeComponent} from './home/home.component';
 import {UserModule} from './user/user.module';
+import {ClubModule} from './club/club.module';
 
 const routes: Routes = [
   {path: '', redirectTo: 'home', pathMatch: 'full'},
@@ -29,6 +30,7 @@ const routes: Routes = [
     MaterialModule,
     RouterModule.forRoot(routes, {enableTracing: false}),
     UserModule,
+    ClubModule
   ],
   providers: [],
   bootstrap: [AppComponent]
