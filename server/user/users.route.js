@@ -1,9 +1,5 @@
 const express = require('express');
-const baseController = require('../base.controller');
-const baseService = require('../base.service');
-const User = require('../../server/models/user.model');
-
-const UserController = baseController(baseService(User));
+const UserController = require('./user.controller');
 const user = express.Router();
 
 /* GET users listing. */

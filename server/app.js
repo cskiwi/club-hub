@@ -14,7 +14,7 @@ let mongoURL = process.env.MONGODB_URI || process.env.MONGO_URL;
 // Monogo connection
 mongoose.Promise = require('bluebird');
 mongoose.connect(mongoURL, {useMongoClient: true, promiseLibrary: require('bluebird')})
-  .then(() => console.log('connection succesful'))
+  .then(() => console.log('connection successful'))
   .catch((err) => console.error(err));
 
 // Config stuff
@@ -27,8 +27,8 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static(path.join(__dirname, 'dist')));
 
 // Api
-app.use('/api/v1/users', require('./routes/users.route').users);
-app.use('/api/v1/clubs', require('./routes/clubs.route').clubs);
+app.use('/api/v1/users', require('./user/users.route').users);
+app.use('/api/v1/clubs', require('./club/clubs.route').clubs);
 
 // Client
 app.use(function (req, res) {

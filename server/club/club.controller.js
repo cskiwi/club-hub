@@ -1,10 +1,7 @@
-const User = require('../../server/models/user.model');
-const Club = require('../../server/models/user.model');
-const baseService = require('../base.service');
-
-const UserService = baseService(User);
-const ClubService = baseService(Club);
-
+const User = require('../user/user.model');
+const Club = require('./club.model');
+const ClubService = require('./club.service');
+const UserService = require('../user/user.service');
 
 exports.list = async function (req, res, next) {
 
@@ -19,7 +16,7 @@ exports.list = async function (req, res, next) {
 
     // Return the list with the appropriate HTTP Status Code and Message.
 
-    return res.status(200).json({status: 200, data: items, message: `Succesfully ${ClubService.type}s Recieved`});
+    return res.status(200).json({status: 200, data: items, message: `Succesfully Clubs Recieved`});
 
   } catch (e) {
 
@@ -37,12 +34,12 @@ exports.create = async function (req, res, next) {
 
     // Calling the Service function with the new object from the Request Body
     const createdModel = await ClubService.create(req.body);
-    return res.status(201).json({status: 201, data: createdModel, message: `Succesfully Created ${ClubService.type}`})
+    return res.status(201).json({status: 201, data: createdModel, message: `Succesfully Created Club`})
   } catch (e) {
 
     //Return an Error Response Message with Code and the Error Message.
 
-    return res.status(400).json({status: 400, message: `${ClubService.type} Creation was Unsuccesfull`})
+    return res.status(400).json({status: 400, message: `Club Creation was Unsuccesfull`})
   }
 };
 
@@ -52,14 +49,7 @@ exports.read = async function (req, res, next) {
 
   try {
     const item = await ClubService.read(id);
-    let users = [];
-    item.users.forEach(u => {
-      users.push(u);
-    });
-    // push found users in the array;
-    item.users = users;
-
-    return res.status(200).json({status: 200, data: item, message: `Succesfully ${ClubService.type} Recieved`})
+    return res.status(200).json({status: 200, data: item, message: `Succesfully Club Recieved`})
   } catch (e) {
     return res.status(400).json({status: 400, message: e.message})
   }
@@ -76,7 +66,7 @@ exports.update = async function (req, res, next) {
 
   try {
     const updatedUser = await ClubService.update(req.body);
-    return res.status(200).json({status: 200, data: updatedUser, message: `Succesfully Updated ${ClubService.type}`})
+    return res.status(200).json({status: 200, data: updatedUser, message: `Succesfully Updated Club`})
   } catch (e) {
     return res.status(400).json({status: 400., message: e.message})
   }
@@ -87,7 +77,7 @@ exports.del = async function (req, res, next) {
 
   try {
     const deleted = await ClubService.delete(id);
-    return res.status(204).json({status: 204, message: `Succesfully ${ClubService.type} Deleted`})
+    return res.status(204).json({status: 204, message: `Succesfully Club Deleted`})
   } catch (e) {
     return res.status(400).json({status: 400, message: e.message})
   }

@@ -12,14 +12,17 @@ import {Club} from '../../models/club.model';
 export class ClubListComponent implements OnInit {
 
   clubList: MatTableDataSource<Club>;
-  displayedColumns = ['id', 'name'];
+  displayedColumns = ['name'];
 
   constructor(public clubService: ClubService) {
   }
 
   ngOnInit() {
     this.clubList = new MatTableDataSource<User>();
-    this.clubService.list().subscribe(r => this.clubList.data = r);
+    this.clubService.list().subscribe(r => {
+      this.clubList.data = r;
+      console.log(r);
+    });
   }
 
   applyFilter(filterValue: string) {

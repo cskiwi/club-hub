@@ -31,9 +31,7 @@ function updateUser(oldModel, newModel){
 }
 
 userSchema.plugin(mongoosePaginate);
+const User = mongoose.model('User', userSchema);
 
-module.exports = {
-  schemaModel: mongoose.model('User', userSchema),
-  schemaUpdate: updateUser
-};
+module.exports = User;
 
