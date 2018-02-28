@@ -1,5 +1,6 @@
 const User = require('../../server/models/user.model');
 const Club = require('../../server/models/user.model');
+const baseService = require('../base.service');
 
 const UserService = baseService(User);
 const ClubService = baseService(Club);

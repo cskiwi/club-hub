@@ -27,8 +27,8 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static(path.join(__dirname, 'dist')));
 
 // Api
-app.use('/api/v1/users', require('./server/routes/users.route').users);
-app.use('/api/v1/clubs', require('./server/routes/clubs.route').clubs);
+app.use('/api/v1/users', require('./routes/users.route').users);
+app.use('/api/v1/clubs', require('./routes/clubs.route').clubs);
 
 // Client
 app.use(function (req, res) {

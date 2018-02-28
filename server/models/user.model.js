@@ -19,7 +19,7 @@ const userSchema = new mongoose.Schema({
   address: [address],
   date_created: Date,
   date_modified: Date,
-  clubs: [ObjectId]
+  clubs: [{type: mongoose.Schema.Types.ObjectId, ref: 'Club'}]
 });
 
 

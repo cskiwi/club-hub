@@ -1,22 +1,40 @@
 @import '~@angular/material/theming';
+@import '../app/_common/styles/variables';
 
-body {
-  font-family: Roboto, 'Helvetica Neue', sans-serif;
+h1 {
+  margin-left: 8px;
+}
 
-  // Helps fonts on OSX looks more consistent with other systems
-  // Isn't currently in button styles due to performance concerns
-  * {
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+mat-sidenav {
+  min-width: $sidebar-width;
+  &.mat-drawer {
+    background: transparent;
   }
+}
 
+.container {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
 
-  .mat-sidenav {
-    min-width: 15vw;
-  }
+.is-mobile mat-toolbar {
+  position: fixed;
+  z-index: 2;
+}
 
+mat-sidenav-container {
+  flex: 1;
+}
 
-  h1 {
-    font-size: 20px;
-  }
+.is-mobile mat-sidenav-container {
+  flex: 1 0 auto;
+}
+
+mat-sidenav-content{
+  padding: 10px;
 }

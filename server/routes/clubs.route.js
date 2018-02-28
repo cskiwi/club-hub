@@ -1,17 +1,15 @@
-const baseController = require('../base.controller');
-const baseService = require('../base.service');
+const clubController = require('../controllers/club.controller');
 const Club = require('../../server/models/club.model');
 
 const express = require('express');
 
-const ClubController = baseController(baseService(Club, 'club'));
 const clubs = express.Router();
 
-clubs.get('/', ClubController.list);
-clubs.get('/', ClubController.create);
-clubs.get('/:id', ClubController.read);
-clubs.get('/', ClubController.update);
-clubs.get('/:id', ClubController.del);
+clubs.get('/', clubController.list);
+clubs.post('/', clubController.create);
+clubs.get('/:id', clubController.read);
+clubs.put('/', clubController.update);
+clubs.delete('/:id', clubController.del);
 
 
 module.exports.clubs = clubs;

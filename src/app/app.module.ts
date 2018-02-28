@@ -10,6 +10,7 @@ import {RouterModule, Routes} from '@angular/router';
 import {HomeComponent} from './home/home.component';
 import {UserModule} from './user/user.module';
 import {ClubModule} from './club/club.module';
+import {FlexLayoutModule} from '@angular/flex-layout';
 
 const routes: Routes = [
   {path: '', redirectTo: 'home', pathMatch: 'full'},
@@ -23,6 +24,7 @@ const routes: Routes = [
     HomeComponent,
   ],
   imports: [
+    FlexLayoutModule,
     BrowserModule,
     FormsModule,
     HttpClientModule,

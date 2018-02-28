@@ -9,6 +9,7 @@ import {Club} from '../../models/club.model';
   styleUrls: ['./club-create.component.scss']
 })
 export class ClubCreateComponent implements OnInit {
+  club: Club = new Club();
 
   constructor(
     private clubService: ClubService,
@@ -21,7 +22,7 @@ export class ClubCreateComponent implements OnInit {
 
   onSubmit(club: Club) {
     this.clubService.create(club).subscribe(r => {
-      this.router.navigate([`/user/`, r.data._id]);
+      this.router.navigate([`/club/`, r.data._id]);
     });
   }
 

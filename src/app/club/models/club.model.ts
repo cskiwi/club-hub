@@ -3,7 +3,7 @@ export class Club {
     public _id?: string,
     public name?: string,
     public description?: string,
-    public abbriviation?: string
+    public abbreviation?: string
   ) {
   }
 }

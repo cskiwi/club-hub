@@ -1,0 +1,16 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>General</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <mat-form-field class="fullWidth">
+      <input matInput placeholder="Name" id="name" [(ngModel)]="club.name" name="name"/>
+    </mat-form-field>
+    <mat-form-field class="fullWidth">
+      <input matInput placeholder="Abbreviation" id="abbreviation" [(ngModel)]="club.abbreviation" name="abbreviation"/>
+    </mat-form-field>
+    <mat-form-field class="fullWidth">
+      <textarea matInput placeholder="Description" id="email" [(ngModel)]="club.description" name="description"></textarea>
+    </mat-form-field>
+  </mat-card-content>
+</mat-card>

@@ -1,4 +1,7 @@
-import { Component, ViewEncapsulation } from '@angular/core';
+import {Component, OnInit, ViewChild, ViewEncapsulation} from '@angular/core';
+import {MediaChange, ObservableMedia} from '@angular/flex-layout';
+import {Subscription} from 'rxjs/Subscription';
+import {MatSidenav} from '@angular/material';
 
 
 @Component({
@@ -9,17 +12,32 @@ import { Component, ViewEncapsulation } from '@angular/core';
   encapsulation: ViewEncapsulation.None,
   preserveWhitespaces: false,
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
+  @ViewChild('sideMenu') sideMenu: MatSidenav;
+
   navItems = [
     {name: 'Users', route: 'user'},
-    {name: 'Badge', route: '/badge'},
-    {name: 'Bottom sheet', route: '/bottom-sheet'},
-    {name: 'Button Toggle', route: '/button-toggle'},
-    {name: 'Button', route: '/button'},
-    {name: 'Card', route: '/card'},
+    {name: 'Clubs', route: 'club'}
   ];
 
-  constructor() {
+  isMobileView: boolean;
+  subscriptionMedia: Subscription;
+
+  constructor(private media: ObservableMedia) {
+  }
+
+  ngOnInit(): void {
+    this.isMobileView = (this.media.isActive('xs') || this.media.isActive('sm'));
+
+    this.subscriptionMedia = this.media.subscribe((change: MediaChange) => {
+      this.isMobileView = (change.mqAlias === 'xs' || change.mqAlias === 'sm');
+    });
+  }
+
+  onLinkClick(): void {
+    if (this.isMobileView) {
+      this.sideMenu.close();
+    }
   }
 
 }
