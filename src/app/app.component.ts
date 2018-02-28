@@ -16,8 +16,8 @@ export class AppComponent implements OnInit {
   @ViewChild('sideMenu') sideMenu: MatSidenav;
 
   navItems = [
-    {name: 'Users', route: 'user'},
-    {name: 'Clubs', route: 'club'}
+    {name: 'Users', route: '/user'},
+    {name: 'Clubs', route: '/club'}
   ];
 
   isMobileView: boolean;

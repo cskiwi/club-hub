@@ -7,8 +7,8 @@ import {MaterialModule} from '../material.module';
 import {FormsModule} from '@angular/forms';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {ClubService} from './services/club.service';
-import { ClubCreateComponent } from './pages/club-create/club-create.component';
-import { ClubFormGeneralComponent } from './components/club-form-general/club-form-general.component';
+import {ClubCreateComponent} from './pages/club-create/club-create.component';
+import {ClubFormGeneralComponent} from './components/club-form-general/club-form-general.component';
 
 
 const routes: Routes = [

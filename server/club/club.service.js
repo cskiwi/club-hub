@@ -20,10 +20,10 @@ exports.list = async function (query, page, limit) {
   }
 };
 
-exports.create = async function (user) {
+exports.create = async function (club) {
 
   // Creating a new Mongoose Object by using the new keyword
-  const newModel = new Club(user);
+  const newModel = new Club(club);
   newModel.date_created = new Date();
 
   try {
@@ -41,15 +41,15 @@ exports.read = async function read(id) {
   // Try Catch the awaited promise to handle the error
 
   try {
-    return await Club.findOne({_id: id}).populate('users');
+    return await Club.findOne({_id: id}).populate('clubs');
   } catch (e) {
     // return a Error message describing the reason
     throw Error('Error while Paginating Users')
   }
 };
 
-exports.update = async function update(user) {
-  const id = user._id;
+exports.update = async function update(club) {
+  const id = club._id;
   let oldModel;
 
   try {
@@ -63,9 +63,10 @@ exports.update = async function update(user) {
   if (!oldModel) {
     return false;
   }
-  oldModel.Name = user.Name;
-  oldModel.abbreviation = user.abbreviation;
-  oldModel.descripotion = user.descripotion;
+  oldModel.name = club.name;
+  oldModel.abbreviation = club.abbreviation;
+  oldModel.descripotion = club.descripotion;
+  oldModel.users = club.users;
   oldModel.date_modified = new Date();
 
   try {

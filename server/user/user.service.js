@@ -66,6 +66,7 @@ exports.update = async function update(user) {
   oldModel.email = user.email;
   oldModel.firstName = user.firstName;
   oldModel.lastName = user.lastName;
+  oldModel.clubs = user.clubs;
 
   user.date_modified = new Date();
 

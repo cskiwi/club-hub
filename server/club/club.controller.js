@@ -12,11 +12,11 @@ exports.list = async function (req, res, next) {
 
   try {
 
-    const items = await ClubService.list({}, page, limit);
+    const clubs = await ClubService.list({}, page, limit);
 
     // Return the list with the appropriate HTTP Status Code and Message.
 
-    return res.status(200).json({status: 200, data: items, message: `Succesfully Clubs Recieved`});
+    return res.status(200).json({status: 200, data: clubs, message: `Succesfully Clubs Recieved`});
 
   } catch (e) {
 
@@ -48,8 +48,27 @@ exports.read = async function (req, res, next) {
   const id = req.params.id;
 
   try {
-    const item = await ClubService.read(id);
-    return res.status(200).json({status: 200, data: item, message: `Succesfully Club Recieved`})
+    const club = await ClubService.read(id);
+    return res.status(200).json({status: 200, data: club, message: `Succesfully Club Recieved`})
+  } catch (e) {
+    return res.status(400).json({status: 400, message: e.message})
+  }
+};
+
+exports.addUser = async function (req, res, next) {
+  const id = req.params.id;
+  const iuserId = req.params.uid;
+
+  try {
+    const club = await ClubService.read(id);
+    const user = await UserService.read(id);
+
+    club.users.push(user._id);
+    user.clubs.push(club._id);
+    const resultClub = ClubService.update(club);
+    const resultUser = UserService.update(user);
+
+    return res.status(200).json({status: 200, data: resultClub, message: `Succesfully added user to club`})
   } catch (e) {
     return res.status(400).json({status: 400, message: e.message})
   }

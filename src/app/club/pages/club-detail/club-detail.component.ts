@@ -27,4 +27,7 @@ export class ClubDetailComponent implements OnInit {
       );
   }
 
+  addUser(){
+    this.clubService.addUser('');
+  }
 }
