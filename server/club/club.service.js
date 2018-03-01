@@ -41,7 +41,7 @@ exports.read = async function read(id) {
   // Try Catch the awaited promise to handle the error
 
   try {
-    return await Club.findOne({_id: id}).populate('clubs');
+    return await Club.findOne({_id: id}).populate('users');
   } catch (e) {
     // return a Error message describing the reason
     throw Error('Error while Paginating Users')

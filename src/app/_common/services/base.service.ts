@@ -15,7 +15,7 @@ export class BaseService<T extends MongoBase> {
   service_url = '';
   type: T;
 
-  constructor(private http: HttpClient) {
+  constructor(protected http: HttpClient) {
   }
 
 

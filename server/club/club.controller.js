@@ -57,14 +57,19 @@ exports.read = async function (req, res, next) {
 
 exports.addUser = async function (req, res, next) {
   const id = req.params.id;
-  const iuserId = req.params.uid;
+  const iuserId = req.body.uid;
 
   try {
     const club = await ClubService.read(id);
-    const user = await UserService.read(id);
+    const user = await UserService.read(iuserId);
 
-    club.users.push(user._id);
-    user.clubs.push(club._id);
+    if (club.users.indexOf(user._id) < 0) {
+      club.users.push(user._id);
+    }
+    if (user.clubs.indexOf(club._id) < 0) {
+      user.clubs.push(club._id);
+    }
+
     const resultClub = ClubService.update(club);
     const resultUser = UserService.update(user);
 

@@ -13,6 +13,7 @@ export class User extends MongoBase {
   ) {
     super(_id);
     this.addresses = addresses || [new Address()];
+
   }
 
   get fullName(): string {

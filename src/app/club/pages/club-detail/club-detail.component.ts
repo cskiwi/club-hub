@@ -3,6 +3,7 @@ import {Club} from '../../models/club.model';
 import {Observable} from 'rxjs/Observable';
 import {ActivatedRoute, ParamMap} from '@angular/router';
 import {ClubService} from '../../services/club.service';
+import {MatSnackBar} from '@angular/material';
 
 @Component({
   selector: 'app-club-detail',
@@ -14,7 +15,8 @@ export class ClubDetailComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private clubService: ClubService
+    private clubService: ClubService,
+    private snackbar: MatSnackBar
   ) {
   }
 
@@ -27,7 +29,9 @@ export class ClubDetailComponent implements OnInit {
       );
   }
 
-  addUser(){
-    this.clubService.addUser('');
+  addUser(club: Club) {
+    this.clubService.addUser(club, '5a93e17fcba3dd0014f37e5a').subscribe(r => {
+      this.snackbar.open('Message archived');
+    });
   }
 }

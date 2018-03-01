@@ -1,5 +1,12 @@
 <div *ngIf="club$ | async as club">
+
+  <pre>{{club|json:2}}</pre>
   <h2>{{club.name}}</h2>
-  <button type="submit" mat-button (click)="addUser()">AddUser</button>
+
+  <div *ngFor="let user of club.users">
+    User: {{user.fullName}}
+  </div>
+
+  <button type="submit" mat-button (click)="addUser(club)">AddUser</button>
 
 </div>
