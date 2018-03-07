@@ -11,7 +11,7 @@
   "scripts": {
     "ng": "ng",
     "start": "node server",
-    "start:mongo": "mongod --dbpath D:\\data\\db",
+    "start:mongo": "mongod --dbpath=data",
     "start:client": "ng serve",
     "build": "ng build",
     "heroku-prebuild": "ng build --env=prod",
