@@ -1,12 +1,9 @@
 <div *ngIf="club$ | async as club">
-
-  <pre>{{club|json:2}}</pre>
   <h2>{{club.name}}</h2>
-
-  <div *ngFor="let user of club.users">
-    User: {{user.fullName}}
-  </div>
-
-  <button type="submit" mat-button (click)="addUser(club)">AddUser</button>
+  <mat-tab-group [dynamicHeight]="true">
+    <mat-tab label="Users">
+      <app-user-table [filter]="{club: club._id}"></app-user-table>
+    </mat-tab>
+  </mat-tab-group>
 
 </div>

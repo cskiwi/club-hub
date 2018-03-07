@@ -20,7 +20,7 @@ export class ClubListComponent implements OnInit {
   ngOnInit() {
     this.clubList = new MatTableDataSource<User>();
     this.clubService.list().subscribe(r => {
-      this.clubList.data = r;
+      this.clubList.data = r.docs;
       console.log(r);
     });
   }

@@ -1,5 +1,5 @@
 export class ListResponse<T> {
-  readonly docs: T[];
+  docs: T[];
   readonly limit: number;
   readonly page: number;
   readonly pages: number;

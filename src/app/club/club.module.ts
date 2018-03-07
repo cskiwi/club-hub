@@ -1,14 +1,11 @@
 import {NgModule} from '@angular/core';
-import {CommonModule} from '@angular/common';
 import {ClubListComponent} from './pages/club-list/club-list.component';
 import {ClubDetailComponent} from './pages/club-detail/club-detail.component';
 import {RouterModule, Routes} from '@angular/router';
-import {MaterialModule} from '../material.module';
-import {FormsModule} from '@angular/forms';
-import {FlexLayoutModule} from '@angular/flex-layout';
 import {ClubService} from './services/club.service';
 import {ClubCreateComponent} from './pages/club-create/club-create.component';
 import {ClubFormGeneralComponent} from './components/club-form-general/club-form-general.component';
+import {SharedModule} from '../_shared/shared.module';
 
 
 const routes: Routes = [
@@ -20,11 +17,8 @@ const routes: Routes = [
 
 @NgModule({
   imports: [
-    CommonModule,
+    SharedModule,
     RouterModule.forRoot(routes),
-    MaterialModule,
-    FormsModule,
-    FlexLayoutModule
   ],
   declarations: [ClubListComponent, ClubDetailComponent, ClubCreateComponent, ClubFormGeneralComponent],
   providers: [ClubService],

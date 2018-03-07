@@ -1,12 +1,12 @@
 const User = require('./user.model');
 const ignoredValues = ['date_created', 'date_modified', '_id'];
 
-exports.list = async function (query, page, limit) {
-
+exports.list = async function (query, params) {
   // Options setup for the mongoose paginate
   const options = {
-    page,
-    limit
+    page: params.page,
+    limit: params.limit,
+    sort: params.sort
   };
 
   // Try Catch the awaited promise to handle the error

@@ -2,8 +2,9 @@ import {User} from '../models/user.model';
 import {Injectable} from '@angular/core';
 
 import 'rxjs/add/operator/map';
-import {BaseService} from '../../_common/services/base.service';
+import {BaseService} from '../../_shared/services/base.service';
 import {HttpClient} from '@angular/common/http';
+import {Observable} from 'rxjs/Observable';
 
 @Injectable()
 export class UserService extends BaseService<User> {

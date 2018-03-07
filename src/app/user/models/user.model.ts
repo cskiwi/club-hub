@@ -1,6 +1,6 @@
 import {Address} from './adress.model';
 import {Sport} from './sport.model';
-import {MongoBase} from '../../_common/models/mongo-base';
+import {MongoBase} from '../../_shared/models/mongo-base';
 
 export class User extends MongoBase {
   constructor(
@@ -8,6 +8,8 @@ export class User extends MongoBase {
     public email?: string,
     public firstName?: string,
     public lastName?: string,
+    public date_created?: Date,
+    public date_modified?: Date,
     public addresses?: Address[],
     public sports?: Sport[]
   ) {

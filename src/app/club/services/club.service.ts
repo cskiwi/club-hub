@@ -1,10 +1,8 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {BaseService} from '../../_common/services/base.service';
+import {BaseService} from '../../_shared/services/base.service';
 import {Club} from '../models/club.model';
 import {User} from '../../user/models/user.model';
-import {Observable} from 'rxjs/Observable';
-import {assign} from 'rxjs/util/assign';
 import 'rxjs/add/operator/mergeMap';
 import 'rxjs/add/operator/toArray';
 import 'rxjs/add/operator/concatMap';
@@ -21,16 +19,6 @@ export class ClubService extends BaseService<Club> {
     super(http);
   }
 
-
-  read(id: string): Observable<Club> {
-    return super.read(id)
-      .map(x => {
-        let test = x.users.map(u => assign(new User, u));
-        console.log(test);
-        x.users = test;
-        return x;
-      });
-  }
 
   addUser(club: Club, user: string | User) {
     const userId = (user as User)._id || user;

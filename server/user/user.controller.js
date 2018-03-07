@@ -5,12 +5,29 @@ exports.list = async function (req, res, next) {
 
   // Check the existence of the query parameters, If the exists doesn't exists assign a default value
 
-  const page = req.query.page ? req.query.page : 1;
-  const limit = req.query.limit ? req.query.limit : 10;
+
+  const filter = {
+    page: req.query.page ? parseInt(req.query.page) + 1 : 1, // Front works 0 based, backend 1 based
+    limit: req.query.limit ? parseInt(req.query.limit) : 10,
+    sort: req.query.sort ? {} : null,
+    direction: req.query.direction ? req.query.direction : null
+  };
+
+  if (req.query.sort) {
+    filter.sort[req.query.sort] = req.query.direction;
+  }
+
+  // filter out basic
+  const query = req.query.query ? {firstName: req.query.query} : {};
+
+  // filter out clubs
+  if (req.query.club) {
+    query.clubs = {$in: [req.query.club]}
+  }
 
   try {
 
-    const items = await UserService.list({}, page, limit);
+    const items = await UserService.list(query, filter);
 
     // Return the list with the appropriate HTTP Status Code and Message.
 

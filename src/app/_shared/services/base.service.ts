@@ -26,10 +26,13 @@ export class BaseService<T extends MongoBase> {
   }
 
   // Read component, takes no arguments
-  public list(): Observable<T[]> {
-    return this.http.get(this.service_url)
-      .map((res: MongoResponse<ListResponse<T>>) => res.data.docs)
-      .map(y => y.map(x => assign(cloneDeep(this.type), x)));
+  public list(params?: any): Observable<ListResponse<T>> {
+    return this.http.get(this.service_url, {params: params})
+      .map((res: MongoResponse<ListResponse<T>>) => res.data)
+      .map(y => {
+        y.docs = y.docs.map(x => assign(cloneDeep(this.type), x));
+        return y;
+      });
   }
 
   // schemaUpdate component, takes a T Object as parameter
