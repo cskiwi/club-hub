@@ -71,7 +71,7 @@ exports.update = async function update(user) {
   user.date_modified = new Date();
 
   try {
-    return await newModel.save();
+    return await oldModel.save();
   } catch (e) {
     throw Error("And Error occured while updating the User");
   }
